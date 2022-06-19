@@ -14,9 +14,11 @@ const StudentLogin = () => {
                     <label>Password</label>
                     <input className='border p-2' type="password" />
                 </div>
+                <Link to='/YearSelect'>
                 <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>
                 Sign in
                 </button>
+                </Link>
                 <div className='flex justify-between'>
                     <a className='flex-items-center'>Forgot Password!</a>
                 </div>
