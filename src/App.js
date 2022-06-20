@@ -6,7 +6,7 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 //import Header from './Header';
 import StudentLogin from './StudentLogin';
 import Yearselect from './Yearselect';
-//import Yearselect from './Yearselect';
+import Studentstat from './Studentstat'
 function App() {
   return (
     <>
@@ -15,6 +15,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/StudentLogin' element={<StudentLogin/>}/>
           <Route path='/YearSelect' element={<Yearselect/>}/>
+          <Route path='/Studentstat' element={<Studentstat/>}/>
         </Routes>
       </Router>
     </>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const Yearselect = () => {
   return ( 
     <div className="h-screen bg-gray-400 flex flex-col">
@@ -8,10 +8,18 @@ const Yearselect = () => {
        </button>
     </div>
     <div className="grid grid-cols-2 gap-4 content-around px-64 mt-24">
+      <Link to="/Studentstat">       
         <div className="flex flex-col justify-center bg-gray-600 h-48 w-96 text-5xl px-20 rounded-2xl">Ist Year</div>
+        </Link> 
+        <Link to="/Studentstat">
         <div className="flex flex-col justify-center bg-gray-600 h-48 w-96 text-5xl px-20 rounded-2xl">2nd Year</div>
-        <div className="flex flex-col justify-center bg-gray-600 h-48 w-96 text-5xl px-20 rounded-2xl">3rd Year</div>
+        </Link>
+        <Link to="/Studentstat">
+          <div className="flex flex-col justify-center bg-gray-600 h-48 w-96 text-5xl px-20 rounded-2xl">3rd Year</div>
+        </Link>
+        <Link to="/Studentstat">
         <div className="flex flex-col justify-center bg-gray-600 h-48 w-96 text-5xl px-20 rounded-2xl">4th Year</div>
+        </Link>
     </div>
     </div>
   )
