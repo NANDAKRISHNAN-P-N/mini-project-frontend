@@ -1,10 +1,11 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const Studentstat = () => {
   return (
     <div className="bg-gray-400">
         <div class="flex space-x-2 justify-end mr-5 mt-3 ">
   <div>
+    <Link to='/Upload'>
     <button type="button" i class="far fa-upload px-6 pt-2.5 pb-2 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center">
       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="far fa-upload"
         class="w-3 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -14,6 +15,7 @@ const Studentstat = () => {
       </svg>
       Upload
     </button>
+    </Link>
   </div>
 </div>
      <div class="flex flex-col">
