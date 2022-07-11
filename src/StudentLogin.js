@@ -20,7 +20,9 @@ const StudentLogin = () => {
                 </button>
                 </Link>
                 <div className='flex justify-between'>
-                    <a className='flex-items-center'>Forgot Password!</a>
+                    <Link to='/Forgotpass'>
+                        <label className="text-underline">Forgot Password??</label>
+                    </Link>
                 </div>
             </form>
         </div>
