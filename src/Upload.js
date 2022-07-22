@@ -306,6 +306,62 @@ const Upload = () => {
                      })}
               </select>
             </div>
+            <div className="ml-24 mt-5">
+            <label 
+                 htmlFor=""
+                 className="text-md font-bold ml-24 text-2xl">Level*
+            </label> 
+            <select className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+                      placeholder="Select Level">
+             <option>Level 1</option>
+             <option>Level 2</option>
+             <option>Level 3</option>
+             <option>Level 4</option>
+             <option>Level 5</option>
+            </select>
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              Organizer*
+              </label>
+            <select className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+                      placeholder="Conducted by">
+               <option>KTU Affilliated colleges</option>
+               <option>IITS</option>
+               <option>NITS</option>
+               <option>National Coleges</option>
+               <option>International Colleges</option>
+            </select>
+            </div>
+            <div className="mt-5 ml-24">
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              Start Date*
+            </label>
+            <input type="Date" className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full">
+            </input>
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              End Date*
+            </label>
+            <input type="Date" className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full">
+            </input>
+            </div>
+            <div className="mt-5 ml-24">
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              Description:
+            </label>
+            </div>
+            <div className='mt-5 ml-48 '>
+            <textarea className='px-4 w-96 mx-3 h-24  text-md italic focus:outline-none border-2 border-black'></textarea>
+            </div>
+            <div className='mt-5 ml-136 flex justify-center items-center'>
+            <button class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800">Submit</button>
+            </div>
             </form>
           </div>
         </div>

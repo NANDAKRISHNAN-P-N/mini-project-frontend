@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 const Studentstat = () => {
   return (
-    <div className="bg-gray-400">
-        <div class="flex space-x-2 justify-end mr-5 mt-3 ">
-  <div>
+    <div className="bg-indigo-100t">
+        <div class="flex space-x-2 justify-end mr-5">
     <Link to='/Upload'>
     <button type="button" i class="far fa-upload px-6 pt-2.5 pb-2 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center">
       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="far fa-upload"
@@ -17,10 +16,9 @@ const Studentstat = () => {
     </button>
     </Link>
   </div>
-</div>
      <div class="flex flex-col">
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+    <div class="py-2 inline-block min-w-full sm:px-6">
       <div class="overflow-hidden">
         <table class="min-w-full mt-4 ml-2 mr-2">
           <thead class="bg-white border-b">
