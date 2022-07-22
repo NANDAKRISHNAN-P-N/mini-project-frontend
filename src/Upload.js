@@ -1,4 +1,6 @@
-import React from 'react'
+import  React from 'react'
+import axios from 'axios'
+const mgitsid = localStorage.getItem('mgitsid')
 
 const data={
   ActivityHead:[
@@ -52,13 +54,6 @@ const data={
           name:"Tech Fest" ,
           Position:["Certificate Of Participation"]
         },
-        // {
-        //   name:["Tech Fest", "Tech Quiz", "MOOC","Competion conducted by Proffessional Scieties","Attending Conference",
-        //        "Attending Seminar","Attending Exhibition","Attending Workshop","Short Term Training Program","Paper Presentation",
-        //         "Paper publication","Poster Presentation","Industrial training/Internship(5days)","Industrial/Exhibition Visit",
-        //          "Foreign Language Skills(IELTS,BEC,TOEFL)"],
-        //   Position:["Certicate of Participation","Certificate of Recognition"]
-        // },
         {
            name:"Tech Quiz" , 
            Position:["Certificate Of Participation"]
@@ -116,12 +111,6 @@ const data={
           name:"StartUpCompany",
           Position:["Achievement"]
         },
-        // {
-        //   name:["StartUpCompany","Patent-Filed","Patent-Published","Patent-Approved","Patent-Licensed","Prototype Developed and Tested",
-        //         "Awards for Product Developed","Innovative Technologies developed","Got Venture Capital Funding for Innovative idea/Products",
-        //          "Start Employment","Societal Innovations"],
-        //   Position:"Achievement"
-        // },
         {
           name:"Patent-Filed", 
           Position:["Achievement"]
@@ -167,11 +156,6 @@ const data={
     {
       name:"Leadership and Management",
       Activity:[
-        // {
-        //   name:["Student Proffessional Societies","College Association Chapters","Festival or Technical Events",
-        //         "Hobby Clubs","Elected Student Representatives"],
-        //   Position:["Core Coordinator","Sub Coordinator","Volunteer"]
-        // },
         {
           name:"Student Proffessional Societies", 
           Position:["Core Coordinator","Sub Coordinator","Volunteer"]
@@ -198,14 +182,107 @@ const data={
 };
 
 const Upload = () => {
+  const [docname,setDocname] = React.useState();
+  const [year,setYear] = React.useState();
   const [ActivityHead, setActivityHead] = React.useState();
   const [Activity, setActivity] = React.useState();
   const [Position, setPosition] = React.useState();
+  const [level,setLevel] = React.useState();
+  const [organizer,setOrganizer] = React.useState();
+  const [startdate,setStartdate] = React.useState();
+  const [enddate,setEnddate] = React.useState();
+  const [description,setDescription] = React.useState();
+
+  const [ fileInputState, setFileInputState] = React.useState('');
+  const [ selectedFile, setSelectedFile ] = React.useState();
+  const [ previewSource, setPreviewSource ] = React.useState();
 
    let selectedActivity = data.ActivityHead.find((c) => c.name === ActivityHead);
    let selectedPosition = selectedActivity?.Activity?.find((s) => s.name === document.getElementById("pos").value);
-  //let selectedPosition = data.Activity?.Position?.find((s) => s.name === selectedActivity);
-  console.log(Activity);
+  // console.log(Activity);
+  
+  const  handleFileChange = (e) =>{
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+ }
+
+ const previewFile = (file) =>{
+   const reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onloadend = () =>{
+     setPreviewSource(reader.result);
+   }
+ }
+
+ const handleSubmitFile = (e) =>{
+    if(!selectedFile) 
+        return;
+    const reader = new FileReader();
+    uploadImage(previewSource);
+ }
+
+ const uploadImage = async(base64EncodedImage) =>{
+    console.log(base64EncodedImage);
+    try{
+        await axios.post("http://localhost:4000/Imageupload",{
+           method: 'POST',
+           body: base64EncodedImage,
+           headers:{'Content-type': 'application/json'},
+        }).then((res) =>{
+           console.log(data);
+        });
+    }catch(error){
+      console.log(error);
+    }
+ }
+
+  const Uploaddata = async(e) =>{
+    e.preventDefault();
+    const File = selectedFile;
+    const Docname = docname;
+    const Year = year;
+    const Activity_Head = ActivityHead ;
+    const Acti_vity = Activity;
+    const Rank = Position ;
+    const Level = level;
+    const Organizer = organizer;
+    const Startdate = startdate;
+    const Enddate = enddate;
+    const Description = description;
+
+    const data = {
+    "mgitsid":mgitsid,
+    "doc_name":Docname,
+    "year":parseInt(Year),
+    "Activity_head":Activity_Head,
+    "Activity":Acti_vity,
+    "Position":Rank,
+    "Level":Level,
+    "Organizer":Organizer,
+    "Start_date":Date(Startdate),
+    "End_date":Date(Enddate),
+    "Description":Description
+    }
+    console.log("before file");
+    handleSubmitFile(File);
+    console.log(data);
+    try{
+      await axios.post("http://localhost:4000/Upload",data).then((res) => {
+         console.log(data,res,res.status);
+         if(res.data.status === "SUCCESS"){
+            window.alert("Details uploaded successfully");
+            console.log(res.data.message)
+         }else if (res.data.status === "FAILURE"){
+             console.log(res.error)
+         }
+      })
+    }catch(error){
+      console.log(error);
+    }
+  }
+  
+  
   return (
     <div>
         <div className="bg-black">
@@ -222,7 +299,7 @@ const Upload = () => {
               File*
             </label>
             <input
-              type="File"
+              type="File" onChange={ handleFileChange } value={ fileInputState }
               placeholder="Upload Document"
               className="w-72 ml-3  text-md italic focus:outline-none border-2 border-black rounded-full"
             />
@@ -231,7 +308,7 @@ const Upload = () => {
                className="text-md font-bold ml-24 text-2xl">
               Document Name*
             </label>
-            <input type="text" placeholder="Document Name"
+            <input type="text" placeholder="Document Name" onChange={(e) => setDocname(e.target.value)}
                className="w-72 ml-3 text-md italic focus:outline-none border-2 border-black rounded-full"
                />
             </div>
@@ -241,11 +318,13 @@ const Upload = () => {
                className="text-md font-bold ml-24 text-2xl">
               Year*
             </label>
-            <select className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full">
-              <option value="1">First Year</option>
-              <option value="2">Second Year</option>
-              <option value="3">Third Year</option>
-              <option value="4">Fourth Year</option>
+            <select className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+             onChange={(e) => setYear(e.target.value)} >
+              <option>---Choose Option</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
             </select>
             <label
                htmlFor=""
@@ -306,7 +385,72 @@ const Upload = () => {
                      })}
               </select>
             </div>
+            <div className="ml-24 mt-5">
+            <label 
+                 htmlFor=""
+                 className="text-md font-bold ml-24 text-2xl">Level*
+            </label> 
+            <select className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+                      placeholder="Select Level" onChange={(e) => setLevel(e.target.value)}>
+             <option>---Choose Level</option>
+             <option>Level 1</option>
+             <option>Level 2</option>
+             <option>Level 3</option>
+             <option>Level 4</option>
+             <option>Level 5</option>
+            </select>
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              Organizer*
+              </label>
+            <select className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+                      placeholder="Conducted by" onChange={(e) => setOrganizer(e.target.value)}>
+               <option>---Choose an option</option>
+               <option>KTU Affilliated colleges</option>
+               <option>IITS</option>
+               <option>NITS</option>
+               <option>National Coleges</option>
+               <option>International Colleges</option>
+            </select>
+            </div>
+            <div className="mt-5 ml-24">
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              Start Date*
+            </label>
+            <input type="Date" className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+                onChange={(e) => setStartdate(e.target.value)}>
+            </input>
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              End Date*
+            </label>
+            <input type="Date" className="px-4 w-72 mx-3 text-md italic focus:outline-none border-2 border-black rounded-full"
+                onChange={(e) => setEnddate(e.target.value)}>
+            </input>
+            </div>
+            <div className="mt-5 ml-24">
+            <label
+                    htmlFor=""
+                    className="text-md font-bold ml-24 text-2xl">
+              Description:
+            </label>
+            </div>
+            <div className='mt-5 ml-48 '>
+            <textarea className='px-4 w-96 mx-3 h-24  text-md italic focus:outline-none border-2 border-black'
+              onChange={(e) => setDescription(e.target.value)}></textarea>
+            </div>
+            <div className='mt-5 ml-136 flex justify-center items-center'>
+            <button class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800"
+                onClick = { Uploaddata }>Submit</button>
+            </div>
             </form>
+            {previewSource && (
+              <img src={previewSource} alt=" "></img> 
+            )}
           </div>
         </div>
     </div>

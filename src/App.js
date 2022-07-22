@@ -9,7 +9,7 @@ import StudentLogin from './StudentLogin';
 import Yearselect from './Yearselect';
 import Studentstat from './Studentstat';
 import Forgotpass from './Forgotpass';
-//import Facultyform from './Facultyform';
+import Facultyform from './Facultyform';
 function App() {
   return (
     <>
@@ -20,6 +20,7 @@ function App() {
           <Route path='/Forgotpass' element={<Forgotpass/>}/>
           <Route path='/YearSelect' element={<Yearselect/>}/>
           <Route path='/Studentstat' element={<Studentstat/>}/>
+          <Route path='/Facultyform' element={<Facultyform/>}/>
           <Route path='/Upload' element={<Upload/>}/>
         </Routes>
       </Router>   
