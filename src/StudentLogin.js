@@ -69,7 +69,6 @@ const StudentLogin = () => {
     //             <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white' onClick = { Loginnow }>
     //                 {/* <input type='submit' name='signin' id='signin' value='signin' 
     //                 onClick = { Loginnow }>
-
     //                 </input> */}
     //             Sign In
     //             </button>
@@ -81,7 +80,7 @@ const StudentLogin = () => {
     //             </div>
     //         </form>
     //     </div>
-        <div className='flex items-center justify-center'>
+        <div className='flex items-center justify-center bg-indigo-100'>
         <form className='max-w-[400] w-96 mx-auto bg-gray-400 p-4 py-36' method='GET'>
             <div class="mb-6">
                 <label class="block mb-2 font-extrabold" for="">Username</label>

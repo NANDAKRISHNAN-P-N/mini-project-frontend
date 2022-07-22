@@ -227,10 +227,10 @@ const Upload = () => {
     try{
         await axios.post("http://localhost:4000/Imageupload",{
            method: 'POST',
-           body: base64EncodedImage,
+           body:base64EncodedImage, 
            headers:{'Content-type': 'application/json'},
         }).then((res) =>{
-           console.log(data);
+           console.log(res.data.message);
         });
     }catch(error){
       console.log(error);
