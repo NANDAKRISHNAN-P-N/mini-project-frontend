@@ -51,7 +51,7 @@ const StudentLogin = () => {
             window.alert("Invalid username or password")
         }
     }
-        }
+  }
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
         <div className='bg-gray-900 flex flex-cols justify-center'>
@@ -81,6 +81,28 @@ const StudentLogin = () => {
                 </div>
             </form>
         </div>
+        <form className='max-w-[400] w-96 mx-auto bg-gray-400 p-4' method='GET'>
+            <div class="mb-6">
+                <label class="block mb-2 font-extrabold" for="">Username</label>
+                <input className='inline-block w-full p-4 leading-6 text-lg font-bold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded' type="text"  onChange={handleInputs} />
+            </div>
+            <div class="mb-6">
+                <label class="block mb-2 font-extrabold" for="">Password</label>
+                <input className='inline-block w-full p-4 leading-6 text-lg font-bold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded' type="password" />
+            </div>
+            {/* <Link to='/YearSelect'> */}
+            <button class="inline-block w-full py-4 px-6 mb-6 text-center text-lg leading-6 text-white font-extrabold bg-indigo-800 hover:bg-indigo-900 border-3 border-indigo-900 shadow rounded transition duration-200" onClick = { Loginnow }>
+                {/* <input type='submit'>
+                 </input> */}
+            Sign in
+            </button>
+            {/* </Link> */}
+            <div className='flex justify-between'>
+                <Link to='/Forgotpass'>
+                    <label className="w-full lg:w-auto px-4"><a class="inline-block font-extrabold hover:underline" href="#">Forgot Password?</a></label>
+                </Link>
+            </div>
+        </form>
     </div>
   )
 }

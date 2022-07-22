@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 const Facultyform = () => {
   return (
     
@@ -29,7 +30,9 @@ const Facultyform = () => {
     <option>Computer Science and Engineering Artificial Intelligence</option>
     <option>Artificial Intelligence and Data Science</option>
   </select>
+  <Link to="/Studentlist">
   <button class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800">Search</button>
+  </Link>
   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
     
   </div>
