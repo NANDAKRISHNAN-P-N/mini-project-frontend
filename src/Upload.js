@@ -1,6 +1,6 @@
 import  React from 'react'
 import axios from 'axios'
-const mgitsid = localStorage.getItem('mgitsid')
+const userid = localStorage.getItem('mgitsid')
 
 const data={
   ActivityHead:[
@@ -218,7 +218,7 @@ const Upload = () => {
  const handleSubmitFile = (e) =>{
     if(!selectedFile) 
         return;
-    const reader = new FileReader();
+    //const reader = new FileReader();
     uploadImage(previewSource);
  }
 
@@ -227,10 +227,12 @@ const Upload = () => {
     try{
         await axios.post("http://localhost:4000/Imageupload",{
            method: 'POST',
-           body:base64EncodedImage, 
+           body:base64EncodedImage,
+           userId:userid, 
            headers:{'Content-type': 'application/json'},
+           'Access-Control-Allow-Origin': '*',
         }).then((res) =>{
-           console.log(res.data.message);
+           console.log(res,res.status,res.data.message);
         });
     }catch(error){
       console.log(error);
@@ -252,7 +254,8 @@ const Upload = () => {
     const Description = description;
 
     const data = {
-    "mgitsid":mgitsid,
+    "mgitsid":userid,
+    "file_url":userid + "url",
     "doc_name":Docname,
     "year":parseInt(Year),
     "Activity_head":Activity_Head,
