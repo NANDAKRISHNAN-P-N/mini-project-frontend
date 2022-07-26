@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const Studentstat = () => {
+const Studentstat = ({ details }) => {
   return (
     <div className="bg-indigo-100">
         <div class="flex space-x-2 justify-end mr-5">
@@ -17,10 +17,10 @@ const Studentstat = () => {
     </Link>
   </div>
      <div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+  <div class="overflow-x-hidden sm:-mx-6 lg:-mx-8">
     <div class="py-2 inline-block min-w-full sm:px-6">
       <div class="overflow-hidden">
-        <table class="min-w-full mt-4 ml-2 mr-2">
+        <table class="min-w-full mt-4 ml-2 mr-2" >
           <thead class="bg-white border-b">
             <tr>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -40,7 +40,48 @@ const Studentstat = () => {
               </th>
             </tr>
           </thead>
-         
+         { details?.map((detail, i=1) => {
+          return(
+            <tbody className='bg-white divide-y divide-gray-200'>
+              <tr>
+                <td className='px-6 py-5 whitespace-nowrap text-sm text-gray-500'>
+                   { i+1 }
+                </td>
+                <td className='px-6 py-5 whitespace-nowrap'>
+                  <div className='ml-4'>
+                  <div className='text-sm font-medium text-gray-900'>
+                      { detail.doc_name }
+                  </div>
+                  </div>
+                </td>
+                <td className='px-6 py-5 whitespace-nowrap'>
+                  <div className='ml-4'>
+                  <div className='text-sm font-medium text-gray-900'>
+                    {/* <a href={'/document/${detail.file_url}'}
+                        className='text-blue-600 hover:text-blue-900'>
+                      view
+                    </a> */}
+                  </div>
+                  </div>
+                </td>
+                <td className='px-6 py-5 whitespace-nowrap'>
+                  <div className='ml-4'>
+                  <div className='text-sm font-medium text-gray-900'>
+                      { detail.Status }
+                  </div>
+                  </div>
+                </td>
+                <td className='px-6 py-5 whitespace-nowrap'>
+                  <div className='ml-4'>
+                  <div className='text-sm font-medium text-gray-900'>
+                      { detail.Points }
+                  </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+             );
+         } ) }
         </table>
       </div>
     </div>

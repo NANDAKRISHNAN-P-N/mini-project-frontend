@@ -1,12 +1,37 @@
-import React from 'react'
+import axios from 'axios'
+import { React } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+//import Studentstat from './Studentstat'
+
 const Yearselect = () => {
   const nav = useNavigate()
+  const userid = localStorage.getItem('mgitsid')
   const logout=()=>{
     localStorage.removeItem("mgitsid")
     nav("/StudentLogin")
   }
   
+  //const [details, setDetails] = useState([]);
+
+  const fetchFirstyear = async(e) =>{
+    e.preventDefault();
+    nav('/Studentstat')
+    //const who = userid;
+    //console.log(who);
+    try{
+        await axios.post("http://localhost:4000/fetchFirstyear", {
+          method:'POST',
+          student: userid,
+          headers:{'Content-type': 'application/json'}
+        }).then((res) => {
+            //setDetails(res.data);
+            console.log(res,res.status);
+        })
+    }catch(error){
+        console.log("inside catch not fetched");
+        console.log(error);
+    }
+  }
 
   return(
 
@@ -24,11 +49,12 @@ const Yearselect = () => {
         
         <div class="flex flex-col"></div>
         <h1 class="mb-3 text-3xl font-extrabold text-center">Choose Year</h1>
-      <Link to="/Studentstat">       
+      {/* <Link to="/Studentstat">        */}
       <div class=" text-indigo-100 transition-colors duration-150
        bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg 
-        inline-flex items-center justify-center">1st Year</div>
-        </Link> 
+        inline-flex items-center justify-center" onClick = { fetchFirstyear }>1st Year</div>
+        {/* </Link>  */}
+        {/* <Studentstat details={details} /> */}
         <Link to="/Studentstat">
         <div class=" text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg inline-flex items-center justify-center">2nd Year</div>
         </Link>
