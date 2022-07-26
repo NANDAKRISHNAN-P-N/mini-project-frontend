@@ -1,9 +1,24 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
+import MaterialTable from 'material-table'
+
 const Studentstat = () => {
+  const [tableData,setTableData]=useState([])
+    const columns=[
+      {title:"SlNo.",field:"slno"},
+      {title:"Document",field:"document"},
+      {title:"View",field:"view"},
+      {title:"Status",field:"status"},
+      {title:"Points",field:"points"},
+      ]
   return (
-    <div className="bg-indigo-100">
-        <div class="flex space-x-2 justify-end mr-5">
+  <div>
+    <div class="flex space-x-2 justify-center ">
+        <button className=" mt-2 bg-indigo-800 hover:bg-indigo-500 text-white font-semibold hover:text-white py-2 px-10  border border-blue-500 hover:border-transparent rounded">
+        View List
+      </button>
+    </div>
+     <div class="flex space-x-2 justify-end mr-5">
     <Link to='/Upload'>
     <button type="button" i class="far fa-upload px-6 pt-2.5 pb-2 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex align-center">
       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="far fa-upload"
@@ -16,38 +31,8 @@ const Studentstat = () => {
     </button>
     </Link>
   </div>
-     <div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 inline-block min-w-full sm:px-6">
-      <div class="overflow-hidden">
-        <table class="min-w-full mt-4 ml-2 mr-2">
-          <thead class="bg-white border-b">
-            <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Sl No.
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Document Name
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                View
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Status
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Point
-              </th>
-            </tr>
-          </thead>
-         
-        </table>
-      </div>
-    </div>
+    <MaterialTable title="CERTIFICATE LIST" columns={columns} data={tableData} />
   </div>
-</div>
-    </div>
   )
 }
-
 export default Studentstat

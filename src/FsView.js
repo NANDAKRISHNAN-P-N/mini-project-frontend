@@ -1,12 +1,15 @@
 import React,{ useState } from 'react'
 //import { Link } from 'react-router-dom'
 import MaterialTable from 'material-table'
-const Studentlist = () => {
+
+const FsView = () => {
   const [tableData,setTableData]=useState([])
     const columns=[
-      {title:"SlNo.",field:"slno"},
-      {title:"Student Name",field:"name"},
-      {title:"View",field:"view"},
+      {title:"Document",field:"document"},
+      {title:"Category",field:"category"},
+      {title:"Conducted By",field:"conductedby"},
+      {title:"Verify",field:"verify"},
+      {title:"Points",field:"points"},
       ]
   return (
   <div>
@@ -15,8 +18,8 @@ const Studentlist = () => {
         View List
       </button>
     </div>
-    <MaterialTable title="STUDENT LIST" columns={columns} data={tableData} />
+      <MaterialTable title="CERTIFICATE LIST" columns={columns} data={tableData} />
   </div>
   )
 }
-export default Studentlist
+export default FsView

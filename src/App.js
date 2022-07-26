@@ -2,7 +2,7 @@
 import './App.css';
 import Home from './Home';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
-  //import {Link} from "react-router-dom"
+//import {Link} from "react-router-dom"
   //import Header from './Header';
 import Upload from './Upload';
 import StudentLogin from './StudentLogin';
@@ -12,6 +12,7 @@ import Resetpass from './Resetpass';
 import Forgotpass from './Forgotpass';
 import Studentlist from './Studentlist';
 import Facultyform from './Facultyform';
+import FsView from './FsView';
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/StudentLogin' element={<StudentLogin/>}/>
+          <Route path='/FsView' element={<FsView/>}/>
           <Route path='/Resetpass' element={<Resetpass/>}/>
           <Route path='/Forgotpass' element={<Forgotpass/>}/>
           <Route path='/YearSelect' element={<Yearselect/>}/>
@@ -31,5 +33,4 @@ function App() {
     </>
   )
 }
-
 export default App;
