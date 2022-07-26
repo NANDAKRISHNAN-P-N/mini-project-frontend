@@ -3,8 +3,9 @@ import { React, useState }from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { data } from 'autoprefixer';
+
 const StudentLogin = () => {
-       const navigate = useNavigate();
+    const navigate = useNavigate();
        const [username , setUsername] = useState();
        const [password , setPassword] = useState();
        let value;
@@ -53,11 +54,9 @@ const StudentLogin = () => {
     }
   }
   return (
-    <div className='bg-white'>
-        
-        <div className='container mt-40 w-96 px-4 mx-auto'>
-        <div class="max-w-lg mx-auto">
-            <form className='max-w-[400] w-full mx-auto bg-indigo-100 p-4' method='GET'>
+    <div className='w-screen bg-indigo-100 flex items-center justify-center h-screen'>
+        <div className='w-96 rounded-md h-96 bg-white'>
+        <form className='w-96 mx-auto bg-white p-4' method='GET'>
                 <h2 className='text-3xl text-center md:text-4xl font-extrabold mb-8'>Login</h2>
                 <div className='block mb-2 font-extrabold'>
                     <label>Username</label>
@@ -81,11 +80,10 @@ const StudentLogin = () => {
                         <label className="inline-block font-extrabold hover:underline">Forgot Password??</label>
                     </Link>
                 </div>
-            </form>
+                </form>
         </div>
-        </div>
-   </div>
+
+    </div>
   )
 }
-
-export default  StudentLogin ;
+export default StudentLogin
