@@ -1,20 +1,44 @@
 import React,{ useState } from 'react'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import MaterialTable from 'material-table'
+import {Link} from '@material-ui/core'
+import axios from 'axios'
 
 const Studentstat = () => {
   const [tableData,setTableData]=useState([])
     const columns=[
-      {title:"SlNo.",field:"slno"},
-      {title:"Document",field:"document"},
-      {title:"View",field:"view"},
-      {title:"Status",field:"status"},
-      {title:"Points",field:"points"},
+      {title:"SlNo.",field:"rowData.tableData.id"},
+      {title:"Document",field:"doc_name"},
+      {title:"View", field:"file_url",
+            render: (rowData: any)=> ( <a href={rowData.file_url}>view</a>)},
+      {title:"Status",field:"Status"},
+      {title:"Points",field:"Points"},
       ]
+      
+      const userid = localStorage.getItem('mgitsid')
+      const year = localStorage.getItem('year')
+      const fetchYear = async(e) =>{
+        e.preventDefault();
+        try{
+            await axios.post("http://localhost:4000/fetchFirstyear", {
+              method:'POST',
+              student: userid,
+              year : year,
+              headers:{'Content-type': 'application/json'}
+            }).then((res) => {
+                setTableData(res.data.data);
+                console.log(res,res.status);
+            })
+        }catch(error){
+            console.log("inside catch not fetched");
+            console.log(error);
+        }
+      }
+
   return (
   <div>
     <div class="flex space-x-2 justify-center ">
-        <button className=" mt-2 bg-indigo-800 hover:bg-indigo-500 text-white font-semibold hover:text-white py-2 px-10  border border-blue-500 hover:border-transparent rounded">
+        <button className=" mt-2 bg-indigo-800 hover:bg-indigo-500 text-white font-semibold hover:text-white py-2 px-10  border border-blue-500 hover:border-transparent rounded" onClick = { fetchYear }>
         View List
       </button>
     </div>

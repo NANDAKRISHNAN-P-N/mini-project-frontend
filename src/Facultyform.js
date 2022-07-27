@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { React, useState }from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +5,10 @@ const Facultyform = () => {
   const nav = useNavigate()
   const logout = (e) => {
     localStorage.removeItem("mgitsid");
+    localStorage.removeItem("Batch");
+    localStorage.removeItem("Branch");
+    localStorage.removeItem("name");
+    localStorage.removeItem("year");
     nav('/StudentLogin');
   }
     const [batch,setBatch] = useState();
@@ -13,24 +16,14 @@ const Facultyform = () => {
     
     const handleBatch = (e) =>{
       setBatch(e.target.value);
+      localStorage.setItem("Batch",e.target.value);
     }
     const handleBranch = (e) =>{
       setBranch(e.target.value);
+      localStorage.setItem("Branch",e.target.value);
     }
-    const filterStudents = async(e) =>{
-    try{
-             nav('/Studentlist');
-             await axios.post("http://localhost:4000/filterStudents",{
-               method:'POST',
-               batch: batch,
-               branch: branch,
-               headers:{'Content-type': 'application/json'}
-             }).then((res) => {
-                  console.log(res,res.data.message,res.data.data);
-             })
-    } catch(error){
-         console.log(error);
-    }     
+    const filter = (e) =>{
+      nav('/Studentlist');
     }
   return (
     <div class="h-screen flex flex-col items-center justify-center w-screen bg-indigo-100">
@@ -44,12 +37,12 @@ const Facultyform = () => {
           <select class=" w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                           onChange = { handleBatch }>
 
-            <option>2018-2022</option>
-            <option>2019-2023</option>
-            <option>2020-2024</option>
-            <option>2021-2025</option>
-            <option>2022-2026</option>
-            <option>2023-2027</option>
+            <option>2018-22</option>
+            <option>2019-23</option>
+            <option>2020-24</option>
+            <option>2021-25</option>
+            <option>2022-26</option>
+            <option>2023-27</option>
           </select>
           <label for="Branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select Branch</label>
           <select class=" w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
@@ -66,7 +59,7 @@ const Facultyform = () => {
             <option>Artificial Intelligence and Data Science</option>
           </select>
             <button class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800"
-                           onClick = { filterStudents }>Search</button>
+                           onClick = { filter }>Search</button>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           </div>
         </div>
