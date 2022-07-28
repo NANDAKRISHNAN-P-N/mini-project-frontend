@@ -11,7 +11,7 @@ const Studentlist = () => {
     const columns=[
       {title:"SlNo.",field:"slno"},
       {title:"StudentName",field:"name"},
-      {title:"View",field:"view", render:(rowData:)=>(<button onClick = { toyear }>view</button>)},
+      {title:"View",field:"view", render: rowData =>(<button onClick = { toyear }>view</button>)},
       ]
 
       const toyear = (e) =>{
