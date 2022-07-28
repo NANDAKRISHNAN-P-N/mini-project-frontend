@@ -10,8 +10,7 @@ const Yearfaculty = () => {
         nav("/Fsview")
     }
   return (
-    <div className ='min-h-screen bg-indigo-100'>
-    <div className='flex items-center justify-center '>
+    <div className='bg-indigo-100 min-h-screen flex items-center justify-center '>
     <div class='w-full max-w-max px-10 py-8 mb-60 mt-40 mx-auto bg-white rounded-lg shadow-xl'>
         <div class='max-w-md mx-auto space-y-6'></div>
         
@@ -34,7 +33,6 @@ const Yearfaculty = () => {
         </Link>
     </div>
      </div>
-    </div>
   )
 }
 
