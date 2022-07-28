@@ -12,6 +12,7 @@ import Resetpass from './Resetpass';
 import Forgotpass from './Forgotpass';
 import Studentlist from './Studentlist';
 import Facultyform from './Facultyform';
+import Yearfaculty from './Yearfaculty';
 import FsView from './FsView';
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/YearSelect' element={<Yearselect/>}/>
           <Route path='/Studentstat' element={<Studentstat/>}/>
           <Route path='/Facultyform' element={<Facultyform/>}/>
+          <Route path='/Yearfaculty' element={<Yearfaculty/>}/>
           <Route path='/Studentlist' element={<Studentlist/>}/>
           <Route path='/Upload' element={<Upload/>}/>
         </Routes>
