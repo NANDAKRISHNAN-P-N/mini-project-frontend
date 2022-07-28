@@ -10,7 +10,7 @@ const Studentstat = () => {
       {title:"SlNo.",field:"rowData.tableData.id"},
       {title:"Document",field:"doc_name"},
       {title:"View", field:"file_url",
-            render: (rowData: any)=> ( <a href={rowData.file_url}>view</a>)},
+            render: rowData=> ( <a href={rowData.file_url}>view</a>)},
       {title:"Status",field:"Status"},
       {title:"Points",field:"Points"},
       ]

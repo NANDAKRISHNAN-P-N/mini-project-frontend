@@ -1,23 +1,25 @@
 import React,{ useState } from 'react'
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 //import {Link} from '@material-ui/core'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import MaterialTable from 'material-table'
 const Studentlist = () => {
-  const nav= useNavigate();
+  //const nav= useNavigate();
   const [tableData,setTableData]=useState([])
   
     const columns=[
       {title:"SlNo.",field:"slno"},
       {title:"StudentName",field:"name"},
-      {title:"View",field:"view", render:(rowData:)=>(<button onClick = { toyear }>view</button>)},
+      {title:"View",field:"view", render:rowData =>(<Link to='/Yearfaculty'><button onClick={
+        localStorage.setItem("name",rowData.name)
+      }>view</button></Link>)},
       ]
-
-      const toyear = (e) =>{
-        localStorage.setItem("name",rowData.StudentName);
-        nav('/Yearfaculty')
-      }
+       
+      // const toyear = (e) =>{
+      //   localStorage.setItem("name",rowData.StudentName);
+      //    nav('/Yearfaculty')
+      //  }
 
       const filterStudents = async(e) =>{
         try{

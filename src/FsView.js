@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
 //import { Link } from 'react-router-dom'
 import MaterialTable from 'material-table'
+import {Link} from '@material-ui/core'
 import axios from 'axios'
 
 const FsView = () => {
@@ -9,9 +10,17 @@ const FsView = () => {
       {title:"Document",field:"doc_name"},
       {title:"Category",field:"Activity"},
       {title:"Conducted By",field:"Organizer"},
-      {title:"Verify",field:"Status"},
+      {title:"Verify",field:"Status",render:rowData =>( <button 
+                             className='bg-indigo-600 flex items-center justify-center hover:bg-indigo-700 rounded-lg text-white' onClick={ calculatePoints }>Verify</button>)},
+      {title:"Certificate",field:"file_url",
+             render:rowData => ( <a href={rowData.file_url}>view</a>)},
       {title:"Points",field:"Points"},
       ]
+    
+
+    const calculatePoints = (e) =>{
+      
+    }
 
     const getDetails = async(e) =>{
         try{

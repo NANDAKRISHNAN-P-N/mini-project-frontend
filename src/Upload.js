@@ -76,19 +76,15 @@ const data={
         },
         {
           name:"Paper presentation", 
-          Position:["Certificate Of Participation"]
+          Position:["Certificate Of Participation","Certificate of Recognition"]
         },
         {
           name:"Paper Publication", 
-          Position:["Certificate Of Participation"]
-        },
-        {
-          name:"Competition conducted by Proffessional societies", 
-          Position:["Certificate Of Participation"]
+          Position:["Certificate Of Participation","Certificate of Recognition"]
         },
         {
           name:"Poster Presentation", 
-          Position:["Certificate Of Participation"]
+          Position:["Certificate Of Participation","Certificate of Recognition"]
         },
         {
           name:"Industrial Training/Internship(5days)", 

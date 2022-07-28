@@ -3,7 +3,6 @@ import './App.css';
 import Home from './Home';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 //import {Link} from "react-router-dom"
-  //import Header from './Header';
 import Upload from './Upload';
 import StudentLogin from './StudentLogin';
 import Yearselect from './Yearselect';
