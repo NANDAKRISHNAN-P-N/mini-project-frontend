@@ -16,6 +16,18 @@ const Yearselect = () => {
     localStorage.setItem("year",1);
     nav('/Studentstat');
   }
+  const setSecondyear = (e) =>{
+    localStorage.setItem("year",2);
+    nav('/Studentstat');
+  }
+  const setThirdyear = (e) =>{
+    localStorage.setItem("year",3);
+    nav('/Studentstat');
+  }
+  const setFourthyear = (e) =>{
+    localStorage.setItem("year",4);
+    nav('/Studentstat');
+  }
   
 
   return(
@@ -39,21 +51,18 @@ const Yearselect = () => {
         
         <div class="flex flex-col"></div>
         <h1 class="mb-3 text-3xl font-extrabold text-center">Choose Year</h1>
-      {/* <Link to="/Studentstat">        */}
       <div class=" text-indigo-100 transition-colors duration-150
        bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg 
         inline-flex items-center justify-center" onClick = { setFirstyear }>1st Year</div>
-        {/* </Link>  */}
-        {/* <Studentstat details={details} /> */}
-        <Link to="/Studentstat">
-        <div class=" text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg inline-flex items-center justify-center">2nd Year</div>
-        </Link>
-        <Link to="/Studentstat">
-        <div class=" text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg inline-flex items-center justify-center">3rd Year</div>
-        </Link>
-        <Link to="/Studentstat">
-        <div class=" text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg inline-flex items-center justify-center">4th Year</div>
-        </Link>
+        <div class=" text-indigo-100 transition-colors duration-150
+         bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg 
+         inline-flex items-center justify-center" onClick = { setSecondyear }>2nd Year</div>
+        <div class=" text-indigo-100 transition-colors duration-150
+         bg-indigo-700 rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg 
+         inline-flex items-center justify-center" onClick = { setThirdyear }>3rd Year</div>
+        <div class=" text-indigo-100 transition-colors duration-150 bg-indigo-700 
+        rounded-lg hover:bg-indigo-800 h-12 px-6 m-2 text-lg inline-flex items-center 
+        justify-center" onClick = { setFourthyear }>4th Year</div>
     </div>
      </div>
     </div>

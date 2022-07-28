@@ -9,6 +9,7 @@ const Facultyform = () => {
     localStorage.removeItem("Branch");
     localStorage.removeItem("name");
     localStorage.removeItem("year");
+    localStorage.removeItem("doc_name");
     nav('/StudentLogin');
   }
     const [batch,setBatch] = useState();

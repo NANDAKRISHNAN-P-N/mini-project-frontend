@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import MaterialTable from 'material-table'
-import {Link} from '@material-ui/core'
+//import {Link} from '@material-ui/core'
 import axios from 'axios'
 
 const Studentstat = () => {

@@ -193,6 +193,8 @@ const Upload = () => {
   const [ selectedFile, setSelectedFile ] = React.useState();
   const [ previewSource, setPreviewSource ] = React.useState();
 
+  const userid = localStorage.getItem('mgitsid');
+
    let selectedActivity = data.ActivityHead.find((c) => c.name === ActivityHead);
    let selectedPosition = selectedActivity?.Activity?.find((s) => s.name === document.getElementById("pos").value);
   // console.log(Activity);

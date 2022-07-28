@@ -7,9 +7,12 @@ import MaterialTable from 'material-table'
 const Studentlist = () => {
   //const nav= useNavigate();
   const [tableData,setTableData]=useState([])
-  
+  const [virtualdata,setVirtualData]=useState([])
+  const handletable = () =>{
+       setTableData(virtualdata);
+  }
     const columns=[
-      {title:"SlNo.",field:"slno"},
+      {title:"SlNo.",field:"slno",render: rowData =>(rowData.id)},
       {title:"StudentName",field:"name"},
       {title:"View",field:"view", render:rowData =>(<Link to='/Yearfaculty'><button onClick={
         localStorage.setItem("name",rowData.name)
@@ -29,7 +32,8 @@ const Studentlist = () => {
                    branch: localStorage.getItem('Branch'),
                    headers:{'Content-type': 'application/json'}
                  }).then((res) => {
-                      setTableData(res.data.data);
+                      setVirtualData(res.data.data);
+                      handletable(virtualdata);
                       //localStorage.setItem("name",res.data.data[0].name);
                       console.log(res,res.data.message,res.data.data);
                  })
