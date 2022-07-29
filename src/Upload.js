@@ -1,6 +1,5 @@
 import  React from 'react'
 import axios from 'axios'
-const userid = localStorage.getItem('mgitsid')
 
 const data={
   ActivityHead:[
@@ -443,6 +442,10 @@ const Upload = () => {
             <div className='mt-5 ml-48 '>
             <textarea className='px-4 w-96 mx-3 h-24  text-md italic focus:outline-none border-2 border-black'
               onChange={(e) => setDescription(e.target.value)}></textarea>
+            <a className='flex align-right text-blue-500 text-bold text-2xl hover:text-blue-700'
+            href='https://ktu.edu.in/eu/att/attachments.htm?download=file&id=Bf1Ie64NNlCIbQPgxzMeiqaZaITiPNKhe24NqRVOreE%3D&announcementId=m3wIwIqGuozHQ0OdieVW5qKOb3nLceuS9zOdUcOhnN4%3D&fileName=ACTIVITYPOINTS.pdf&downloadType=xSoEMOcheCmrdYCOgQOJALCA7tk2UIKVeRs2zkFGWz0%3D'>
+              Go here 
+            </a>
             </div>
             <div className='mt-5 ml-136 flex justify-center items-center'>
             <button class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg hover:bg-indigo-800"

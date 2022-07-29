@@ -1,28 +1,26 @@
 import React,{ useState } from 'react'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 //import {Link} from '@material-ui/core'
 import axios from 'axios'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import MaterialTable from 'material-table'
 const Studentlist = () => {
-  //const nav= useNavigate();
+  const nav= useNavigate();
   const [tableData,setTableData]=useState([])
   const [virtualdata,setVirtualData]=useState([])
   const handletable = () =>{
        setTableData(virtualdata);
   }
     const columns=[
-      {title:"SlNo.",field:"slno",render: rowData =>(rowData.id)},
+      {title:"Batch",field:"batch"},
+      {title:"MgitsId",field:"MgitsId"},
       {title:"StudentName",field:"name"},
-      {title:"View",field:"view", render:rowData =>(<Link to='/Yearfaculty'><button onClick={
-        localStorage.setItem("name",rowData.name)
-      }>view</button></Link>)},
       ]
        
-      // const toyear = (e) =>{
-      //   localStorage.setItem("name",rowData.StudentName);
-      //    nav('/Yearfaculty')
-      //  }
+      const toyear = (e,b) =>{
+        localStorage.setItem("name",b.name);
+         nav('/Yearfaculty')
+       }
 
       const filterStudents = async(e) =>{
         try{
@@ -34,7 +32,6 @@ const Studentlist = () => {
                  }).then((res) => {
                       setVirtualData(res.data.data);
                       handletable(virtualdata);
-                      //localStorage.setItem("name",res.data.data[0].name);
                       console.log(res,res.data.message,res.data.data);
                  })
         } catch(error){
@@ -49,7 +46,14 @@ const Studentlist = () => {
         View List
       </button>
     </div>
-    <MaterialTable title="STUDENT LIST" columns={columns} data={tableData} />
+    <MaterialTable title="STUDENT LIST" columns={columns} data={tableData} 
+            actions={[
+              {
+                   icon:'M',
+                   tooltip:'Select Year',
+                   onClick: (toyear)
+              }
+             ]}  />
   </div>
   )
 }

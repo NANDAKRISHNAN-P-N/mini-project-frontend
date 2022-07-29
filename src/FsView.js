@@ -2,24 +2,19 @@ import React,{ useState } from 'react'
 //import { Link } from 'react-router-dom'
 import MaterialTable from 'material-table'
 
-//import { AddBox } from '@material-ui/icons/AddBox'
-//import Checkicon from '@material-ui/icons'
 //import {Link} from '@material-ui/core'
 //import { forwardRef } from 'react'
 import axios from 'axios'
 
 const FsView = () => {
   const [tableData,setTableData]=useState([])
-  const [verify,setVerify]=useState(false)
+  //const [verify,setVerify]=useState([false])
  // let [document,setDocument] = useState()
     const columns=[
       {title:"Document",field:"doc_name"},
       {title:"Category",field:"Activity"},
       {title:"Conducted By",field:"Organizer"},
-      {title:"Verify",field:"Status",render:rowData =>( <button 
-        className='bg-indigo-600 flex items-center justify-center hover:bg-indigo-700 rounded-lg text-white'>
-          {verify?"verified":"Not verified"}
-        </button>)},
+      {title:"Verify",field:"Status"},
       {title:"Certificate",field:"file_url",
              render:rowData => ( <a href={rowData.file_url}>view</a>)},
       {title:"Points",field:"Points"},
@@ -42,9 +37,6 @@ const FsView = () => {
                headers:{'Content-type':'application/json'}
              }).then((res) =>{
                console.log(res.data.message);
-               if(res.data.status==="SUCCESS"){
-                setVerify();
-               }
              })
          }catch(error){
            console.log(error);
@@ -81,7 +73,7 @@ const FsView = () => {
                   {
                        icon:'V',
                        tooltip:'Verify and Assign Points',
-                       onClick: (calculatePoints(rowData.doc_name))
+                       onClick: (calculatePoints)
                   }
                  ]} />
   </div>

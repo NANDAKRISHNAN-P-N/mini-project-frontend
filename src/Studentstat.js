@@ -7,7 +7,6 @@ import axios from 'axios'
 const Studentstat = () => {
   const [tableData,setTableData]=useState([])
     const columns=[
-      {title:"SlNo.",field:"rowData.tableData.id"},
       {title:"Document",field:"doc_name"},
       {title:"View", field:"file_url",
             render: rowData=> ( <a href={rowData.file_url}>view</a>)},
